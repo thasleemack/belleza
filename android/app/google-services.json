@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1746692881",
+    "project_id": "belleza-f2865",
+    "storage_bucket": "belleza-f2865.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1746692881:android:6e096a426c94ba6a96bab0",
+        "android_client_info": {
+          "package_name": "com.example.makeupproject"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDo7e9PEuPKUarBwnil__r5wmo66xNpP7Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
