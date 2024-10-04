@@ -11,7 +11,10 @@ import 'moresettings.dart';
 class Query extends StatelessWidget {
   String userId;
 
-   Query({super.key,required this.userId,});
+  Query({
+    super.key,
+    required this.userId,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +23,7 @@ class Query extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Padding(
+          title: const Padding(
             padding: EdgeInsets.only(bottom: 30, left: 50),
             child: Text(
               'Send a query',
@@ -32,69 +35,81 @@ class Query extends StatelessWidget {
             ),
           ),
           leading: Padding(
-            padding: EdgeInsets.only(bottom: 30),
+            padding: const EdgeInsets.only(bottom: 30),
             child: IconButton(
                 onPressed: () {
-                 back(context);
+                  back(context);
                 },
-                icon: Icon(
+                icon: const Icon(
                   Icons.arrow_back_ios_new,
                   color: Colors.white,
                 )),
           ),
           toolbarHeight: height * 0.13,
-          flexibleSpace: Image(
+          flexibleSpace: const Image(
             image: AssetImage('assets/Ellipse 9.png'),
             fit: BoxFit.fill,
           ),
           backgroundColor: Colors.transparent,
         ),
-        body: SingleChildScrollView(physics: NeverScrollableScrollPhysics(),
+        body: SingleChildScrollView(
+          physics: const NeverScrollableScrollPhysics(),
           child: Column(
             children: [
-              Container(height: height/4,),
-              Stack(
-                  children: [
-
-                    Image.asset("assets/Ellipse 9 (1).png",),
-                    Padding(
-                      padding:  EdgeInsets.only(left:height/25,right:height/25,top: height/10, ),
-                      child: Column(crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Consumer<MainProvider>(
-                            builder: (context,value,child) {
-                              return TextFormField(controller:value.queryController ,
-                                style:  TextStyle(
-                                    color: Colors.white, fontWeight: FontWeight.w200),
-                                maxLines: 5,
-                                decoration: InputDecoration(
-                                  hintText: "write something",
-                                  hintStyle: TextStyle(
-                                      color: Colors.grey, fontWeight: FontWeight.w200),
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                ),
-                              );
-                            }
+              Container(
+                height: height / 4,
+              ),
+              Stack(children: [
+                Image.asset(
+                  "assets/Ellipse 9 (1).png",
+                ),
+                Padding(
+                  padding: EdgeInsets.only(
+                    left: height / 25,
+                    right: height / 25,
+                    top: height / 10,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Consumer<MainProvider>(builder: (context, value, child) {
+                        return TextFormField(
+                          controller: value.queryController,
+                          style: const TextStyle(
+                              color: Colors.white, fontWeight: FontWeight.w200),
+                          maxLines: 5,
+                          decoration: InputDecoration(
+                            hintText: "write something",
+                            hintStyle: const TextStyle(
+                                color: Colors.grey,
+                                fontWeight: FontWeight.w200),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
                           ),
-
-                          SizedBox(height: height/10,),
-                          Consumer<MainProvider>(
-                            builder: (context,value,child) {
-                              return InkWell(onTap: (){
-                                value.queryFn(userId,);
-                                back(context);
-
-                              },
-                                  child: button(" Submit",height / 25,width / 3,));
-                            }
-                          ),
-                        ],
+                        );
+                      }),
+                      SizedBox(
+                        height: height / 10,
                       ),
-                    )
-
-                  ]),
+                      Consumer<MainProvider>(builder: (context, value, child) {
+                        return InkWell(
+                            onTap: () {
+                              value.queryFn(
+                                userId,
+                              );
+                              back(context);
+                            },
+                            child: button(
+                              " Submit",
+                              height / 25,
+                              width / 3,
+                            ));
+                      }),
+                    ],
+                  ),
+                )
+              ]),
             ],
           ),
         ),

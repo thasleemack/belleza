@@ -50,7 +50,7 @@ class LoginScreen extends StatelessWidget {
                   ),
                   Consumer<LoginProvider>(
                     builder: (context,val,child) {
-                      return InkWell(
+                      return GestureDetector(
                           onTap: (){
                         if(val.phoneController.text.length==10&&val.phoneController.text!='') {
                           db.collection("USER").where("PHONE",isEqualTo: "+91${val.phoneController.text}").get().then((value) {

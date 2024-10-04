@@ -31,6 +31,7 @@ class _SplashState extends State<Splash> {
 
     Timer( Duration(seconds: 5), () {
       if(loginUser==null){
+
         callNextReplacement(context, LoginScreen());
       }else{
         loginProvider.userAuthorized(loginUser.phoneNumber, context);

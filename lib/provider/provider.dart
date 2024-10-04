@@ -100,8 +100,11 @@ class MainProvider extends ChangeNotifier {
         priceController.text = map["PRICE"].toString();
         notifyListeners();
       }
+
     });
   }
+
+
 
   void deleteMakeuptype(Mkid, context) {
     db.collection("MAKEUP_TYPE").doc(Mkid).delete();
@@ -345,7 +348,7 @@ class MainProvider extends ChangeNotifier {
     customermap["PHONE"] = PhoneController.text.toString();
     customermap["ADDRESS"] = addressController.text.toString();
     customermap["ADDED_TIME"] = DateTime.now();
-    customermap["fcmid"] = getToken();
+    // customermap["fcmid"] = getToken();
     // customermap["ADDED_BY"] = "";
 
 
@@ -353,7 +356,7 @@ class MainProvider extends ChangeNotifier {
     usermap["NAME"] = NameController.text.toString();
     usermap["TYPE"] = "USER";
     usermap["PHONE"] = "+91${PhoneController.text}";
-    usermap["fcmid"] = getToken();
+    // usermap["fcmid"] = getToken();
 
 
     if (profileFileImage != null) {
@@ -380,13 +383,6 @@ class MainProvider extends ChangeNotifier {
       customermap["USER_ID"] = id;
       usermap["USER_ID"] = id;
     }
-
-
-
-
-
-
-
 
     if(from=="NEW"){
       db.collection("CUSTOMERS").doc(id).set(customermap);
@@ -440,11 +436,6 @@ class MainProvider extends ChangeNotifier {
   TextEditingController timeController = TextEditingController();
 
 
-  // Future<void> selectDateAndTime(BuildContext context) async {
-  //
-  //   await _selectDate(context);
-  //   await _selectTime(context);
-  // }
 
   Future<void> selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
@@ -647,10 +638,7 @@ class MainProvider extends ChangeNotifier {
 
 void addReviews(String userId,double rating,String userName ){
 
-    String id= DateTime
-        .now()
-        .millisecondsSinceEpoch
-        .toString();
+    String id= DateTime.now().millisecondsSinceEpoch.toString();
   HashMap<String, Object> reviewMap = HashMap();
     reviewMap["REVIEW"] = reviewController.text.toString();
     reviewMap["RATING"] = rating;
@@ -768,19 +756,29 @@ File? profileFileImage;
 
   //   fcm Token:
   // cv4cqlDzQv6OCJTGHkXJx9:APA91bHbPQ2-7N2LbCSP82I5mDo6KJVhwLGlIbhU-NefzaYkH7Sy6_05VrcduGLwzhgj8N_iZvF5WqZVPhBh_4Tuv9_4qv19iiiNG5oXbsysYAKhEylaNQLtqamG6hFzEeQh5Aqjz5Vp
+//
+//    Future<String> getToken() async{
+//     String fcmid="";
+//     await FirebaseMessaging.instance.getToken().then((newToken){
+//       print('FCM Token:');
+//
+//       fcmid=newToken.toString();
+//       print(newToken);
+//       // saveToken(newToken!);
+//
+//     });
+//     return fcmid;
+// }
+  String fcmid='';
 
-   Future<String> getToken() async{
-    String fcmid="";
-    await FirebaseMessaging.instance.getToken().then((newToken){
-      print('FCM Token:');
+  void getToken(){
+    FirebaseMessaging.instance.getToken().then((fcmValue) {
 
-      fcmid=newToken.toString();
-      print(newToken);
-      // saveToken(newToken!);
-
+      fcmid=fcmValue.toString();
+      print("yteuweyeywety"+fcmid.toString());
     });
-    return fcmid;
-}
+    notifyListeners();
+    }
 Future<void> saveToken(String token) async {
   String id = DateTime
       .now()
@@ -993,6 +991,10 @@ void initState(){
       return false;
     }
   }
+
+
+
+
 
   // Future<bool> callOnFcmApiSendPushNotifications({
   //   required String title,

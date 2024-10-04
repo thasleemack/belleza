@@ -212,6 +212,7 @@ class AddAppointment extends StatelessWidget {
                                     focusedBorder: OutlineInputBorder(
                                       borderRadius:
                                       BorderRadius.circular(10.0),
+
                                       borderSide: BorderSide(
                                         color: Colors.black26,
                                       ),

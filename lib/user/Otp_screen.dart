@@ -18,7 +18,12 @@ class OtpScreen extends StatelessWidget {
   String name;
   String address;
   String phone;
-   OtpScreen({super.key, required this.userId,required this.name,required this.address,required this.phone});
+   OtpScreen({
+     super.key,
+     required this.userId,
+     required this.name,
+     required this.address,
+     required this.phone});
 
   @override
   Widget build(BuildContext context) {
@@ -46,9 +51,7 @@ class OtpScreen extends StatelessWidget {
                     defaultPinTheme: PinTheme( decoration: BoxDecoration(
                         color: Colors.white.withOpacity(0.15),
                         borderRadius: BorderRadius.circular(10)),
-
-                        textStyle:
-                        TextStyle(fontWeight: FontWeight.bold),
+                        textStyle: TextStyle(fontWeight: FontWeight.bold),
                         height: 50,
                         width: 50,
 

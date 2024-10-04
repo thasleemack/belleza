@@ -17,7 +17,8 @@ class Appointments extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar( leading:Padding(
           padding:  const EdgeInsets.only(bottom: 30),
-          child: IconButton(onPressed: (){
+          child: IconButton(
+              onPressed: (){
            finish(context);
            },
               icon: const Icon(Icons.arrow_back_ios_new,color: Colors.white,)),
@@ -60,7 +61,7 @@ class Appointments extends StatelessWidget {
                           Text("Appointment time: ${item.appointment_time}",style: TextStyle(fontFamily: 'PoetsenOne',color: cl23557,),),
                           Text("Address : ${item.address}",style: TextStyle(fontFamily: 'PoetsenOne',color: cl23557,),),
                           Text("Phone : ${item.phone}",style: TextStyle(fontFamily: 'PoetsenOne',color: cl23557,),),
-                          Text("Makeup type : ${item.makeup_type}",style: TextStyle(fontFamily: 'PoetsenOne',color: cl23557,),),
+                          Text("Makeup type : ${item.makeup_type }",style: TextStyle(fontFamily: 'PoetsenOne',color: cl23557,),),
                           SizedBox(height: 5,),
                           Container(
                             height:height/28,

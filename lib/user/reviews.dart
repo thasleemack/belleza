@@ -129,12 +129,14 @@ class Reviews extends StatelessWidget {
             },);
           }
         ),
+
         floatingActionButton: Consumer<MainProvider>(
           builder: (context,value,child) {
             return FloatingActionButton(backgroundColor: const Color(0xff35103B),
               onPressed: (){
               value.clearReviews();
-              callNext(context,  Addreview(userId: userId, userName: userName,));
+              callNext(context,  Addreview(userId: userId, userName: userName,)
+              );
               },
             child: const Icon(Icons.add,color: Colors.white,),);
           }

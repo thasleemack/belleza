@@ -45,44 +45,9 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor:cl23557),
           useMaterial3: true,
         ),
-        home:MyHomePage() ,
+        home:Splash() ,
       ),
     );
   }
 }
 
-// class MyHomePage extends StatefulWidget {
-//   @override
-//   _MyHomePageState createState() => _MyHomePageState();
-// }
-//
-// class _MyHomePageState extends State<MyHomePage> {
-//   final MessagingService _messagingService = MessagingService();
-//
-//   @override
-//   void initState() {
-//     super.initState();
-//     _messagingService.initialize();
-//   }
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('Flutter Firebase Notifications'),
-//       ),
-//       body: Center(
-//         child: Consumer<MainProvider>(
-//           builder: (context, notificationProvider, _) {
-//             return Text(
-//               notificationProvider.isNewNotification
-//                   ? 'New Notification Received!'
-//                   : 'No New Notifications',
-//             );
-//           },
-//         ),
-//       ),
-//     );
-//   }
-// }
-//

@@ -4,23 +4,16 @@ import 'package:makeupproject/constants/callFunctions.dart';
 import 'package:makeupproject/provider/provider.dart';
 import 'package:makeupproject/user/profile.dart';
 import 'package:provider/provider.dart';
-
 import 'notifications.dart';
-
 class Home extends StatelessWidget {
   String userId;
   String userName;
-
-   Home({super.key,required this.userId,required this.userName,});
-
-
-  @override
-
-  Widget build(BuildContext context) {
+  Home({super.key,required this.userId,required this.userName,});
+   @override
+   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return Scaffold(
-
       appBar: AppBar(
         automaticallyImplyLeading: false,
         actions: [
@@ -31,13 +24,11 @@ class Home extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) => Notifications()));
-
-            },icon: Icon(Icons.notifications_none)),
-          )
+              },icon: Icon(Icons.notifications_none)),)
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.only(left: 15, right: 15),
+        padding: EdgeInsets.only(left: 15, right: 15),
         child: Consumer<MainProvider>(
           builder: (context,value,child) {
             return GridView.builder(

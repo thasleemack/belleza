@@ -94,8 +94,7 @@ class AddWork extends StatelessWidget {
                 return InkWell(
                 onTap: (){
                   showBottomSheet(context);
-
-                },
+                  },
                   child: SizedBox(height: height / 2.5,
                     child:value.fileImageList.isNotEmpty?
                     ListView.builder(
@@ -183,16 +182,14 @@ class AddWork extends StatelessWidget {
                           child: Consumer<MainProvider>(
                               builder: (context, value, child) {
                             return Autocomplete<MakeupType>(
-                              optionsBuilder:
-                                  (TextEditingValue textEditingValue) {
+                              optionsBuilder: (TextEditingValue textEditingValue) {
                                 return value.makeupTypeList
                                     .where((MakeupType item) => item.name
                                         .toLowerCase()
                                         .contains(textEditingValue.text
-                                            .toLowerCase()))
-                                    .toList();
-                              },
-                              displayStringForOption: (MakeupType option) =>
+                                            .toLowerCase())).toList();
+                                },
+                              displayStringForOption:(MakeupType option) =>
                                   option.name,
                               fieldViewBuilder: (BuildContext context,
                                   TextEditingController

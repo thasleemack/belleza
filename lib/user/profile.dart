@@ -1,4 +1,3 @@
-
 import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -20,9 +19,8 @@ class Profile extends StatelessWidget {
   String userId;
   String userName;
 
-
-
-  Profile({super.key,
+  Profile({
+    super.key,
     required this.photo,
     required this.name,
     required this.makeuptype,
@@ -30,7 +28,6 @@ class Profile extends StatelessWidget {
     required this.price,
     required this.userId,
     required this.userName,
-
   });
 
   @override
@@ -39,75 +36,81 @@ class Profile extends StatelessWidget {
     var width = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
-
-        appBar:  AppBar(
-         leading: Padding(
-           padding:  const EdgeInsets.only(bottom: 30),
-           child: IconButton(onPressed: (){
-            finish(context);
-
-           },
-               icon: const Icon(Icons.arrow_back_ios_new,color: Colors.white,)),
-         ),
+        appBar: AppBar(
+          leading: Padding(
+            padding: const EdgeInsets.only(bottom: 30),
+            child: IconButton(
+                onPressed: () {
+                  finish(context);
+                },
+                icon: const Icon(
+                  Icons.arrow_back_ios_new,
+                  color: Colors.white,
+                )),
+          ),
           toolbarHeight: height * 0.13,
-
           flexibleSpace: const Image(
             image: AssetImage('assets/Ellipse 9.png'),
             fit: BoxFit.fill,
           ),
           backgroundColor: Colors.transparent,
         ),
-        body:  SingleChildScrollView(
+        body: SingleChildScrollView(
           child: Column(
             children: [
-          Consumer<MainProvider>(
-            builder: (context,value,child) {
-              return InkWell(
-                onTap: (){
-                  value.getReviews();
+              Consumer<MainProvider>(builder: (context, value, child) {
+                return InkWell(
+                  onTap: () {
+                    value.getReviews();
 
-                 value.getUserPhoto(userId,userName);
-                  callNext(context, Reviews(userId: userId, userName: userName,));
-                },
-                child: Container(
-                margin: EdgeInsets.only(
-                                  left:height/2.8),
-                                  height: height/30,
-                                  width: width/5,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(30),
-                                      border: Border.all(color: const Color(0xff523557)),
-                                      color: Colors.white
-                                  ),
-                                  child: const Center(
-                                    child: Text("Reviews", style: TextStyle(
-                                        fontSize: 10,
-                                        fontFamily: 'PoetsenOne',
-                                        color: Color(0xff988A9A)),),
-                                  ),
-                                ),
-              );
-            }
-          ),
+                    value.getUserPhoto(userId, userName);
+                    callNext(
+                        context,
+                        Reviews(
+                          userId: userId,
+                          userName: userName,
+                        ));
+                  },
+                  child: Container(
+                    margin: EdgeInsets.only(left: height / 2.8),
+                    height: height / 30,
+                    width: width / 5,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        border: Border.all(
+                            color: const Color(0xff523557)),
+                        color: Colors.white),
+                    child: const Center(
+                      child: Text(
+                        "Reviews",
+                        style: TextStyle(
+                            fontSize: 10,
+                            fontFamily: 'PoetsenOne',
+                            color: Color(0xff988A9A)),
+                      ),
+                    ),
+                  ),
+                );
+              }),
+
               Consumer<MainProvider>(builder: (context, valu, child) {
                 return Column(
                   children: [
                     CarouselSlider.builder(
                       itemCount: photo.length,
                       itemBuilder: (context, index, realIndex) {
-
-                        return GestureDetector(onTap: (){
-                          showDialog(
-                              context: context,
-                              builder: (_) =>
-                              new AlertDialog(contentPadding: EdgeInsets.zero,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.all(Radius.circular(10.0))
-                                ),
-                                content:Image.network(photo[index]),
-                              )
-                          );
-                        },
+                        return GestureDetector(
+                          onTap: () {
+                            showDialog(
+                                context: context,
+                                builder: (_) => new AlertDialog(
+                                      contentPadding: EdgeInsets.zero,
+                                      shape: const RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10.0))),
+                                      content: Image.network(photo[index]),
+                                    ));
+                          },
                           child: SizedBox(
                             width: MediaQuery.of(context).size.width,
                             child: ClipRRect(
@@ -125,8 +128,8 @@ class Profile extends StatelessWidget {
                       },
                       options: CarouselOptions(
                           clipBehavior: Clip.antiAliasWithSaveLayer,
-                          height: height/4,
-                          viewportFraction: 1 /2,
+                          height: height / 4,
+                          viewportFraction: 1 / 2,
                           autoPlay: true,
                           pageSnapping: true,
                           enlargeStrategy: CenterPageEnlargeStrategy.height,
@@ -134,7 +137,6 @@ class Profile extends StatelessWidget {
                           autoPlayInterval: const Duration(seconds: 4),
                           onPageChanged: (index, reason) {
                             valu.activeIndex(index);
-
                           }),
                     ),
                     buildIndiCator(
@@ -166,130 +168,129 @@ class Profile extends StatelessWidget {
               //     },
               //   ),
               // ),
-              SizedBox(height: height/100,),
-              Container(
-
-                decoration: const BoxDecoration(
-                    image: DecorationImage(image: AssetImage("assets/Ellipse 9 (1).png"),fit: BoxFit.fill)),
-                child:  Column(children: [
-                                        Padding(
-                                          padding: const EdgeInsets.only(top: 50, left: 30),
-                                          child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                               Text(
-                                                "Bride                     :   ",
-                                                style: TextStyle(
-                                                    fontSize: 18,
-                                                    fontFamily: 'PoetsenOne',
-                                                    color: Colors.white),
-                                              ),
-                                              SizedBox(
-                                                  width: width * 0.4,
-                                                  child:  Text(name,
-                                                    // value.newWo"rkList[index].bride,
-                                                    style: TextStyle(
-                                                        fontSize: 18,
-                                                        fontFamily: 'PoetsenOne',
-                                                        color: Colors.white),
-                                                  ))
-                                            ],
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(left: 30, top: 10),
-                                          child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                              const Text(
-                                                "Makeup type     :   ",
-                                                style: TextStyle(
-                                                    fontSize: 18,
-                                                    fontFamily: 'PoetsenOne',
-                                                    color: Colors.white),
-                                              ),
-                                              SizedBox(
-                                                  width: width * 0.4,
-                                                  child:  Text(makeuptype,
-                                                     // value.newWorkList[index].makeuptype,
-                                                    style: TextStyle(
-                                                        fontSize: 18,
-                                                        fontFamily: 'PoetsenOne',
-                                                        color: Colors.white),
-                                                  ))
-                                            ],
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(top: 10, left: 30),
-                                          child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                              const Text(
-                                                "Description       :   ",
-                                                style: TextStyle(
-                                                    fontSize: 18,
-                                                    fontFamily: 'PoetsenOne',
-                                                    color: Colors.white),
-                                              ),
-                                              SizedBox(
-                                                  width: width * 0.4,
-                                                  child:  Text(description,
-                                                    // value.newWorkList[index].description,
-                                                    style: TextStyle(
-                                                        fontSize: 18,
-                                                        fontFamily: 'PoetsenOne',
-                                                        color: Colors.white),
-                                                  ))
-                                            ],
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(top: 10, left: 30),
-                                          child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                              const Text(
-                                                "Price                     :   ",
-                                                style: TextStyle(
-                                                    fontSize: 18,
-                                                    fontFamily: 'PoetsenOne',
-                                                    color: Colors.white),
-                                              ),
-                                              SizedBox(
-                                                  width: width * 0.4,
-                                                  child:  Text("$price/",
-                                                   // "${value.newWorkList[index].price}/",
-                                                    style: TextStyle(
-                                                        fontSize: 18,
-                                                        fontFamily: 'PoetsenOne',
-                                                        color: Colors.white),
-                                                  ))
-                                            ],
-                                          ),
-                                        ),
-                                      ]),
+              SizedBox(
+                height: height / 100,
               ),
-
-
-
+              Container(
+                decoration: const BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage("assets/Ellipse 9 (1).png"),
+                        fit: BoxFit.fill)),
+                child: Column(children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 50, left: 30),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          "Bride                     :   ",
+                          style: TextStyle(
+                              fontSize: 18,
+                              fontFamily: 'PoetsenOne',
+                              color: Colors.white),
+                        ),
+                        SizedBox(
+                            width: width * 0.4,
+                            child: Text(
+                              name,
+                              // value.newWo"rkList[index].bride,
+                              style: const TextStyle(
+                                  fontSize: 18,
+                                  fontFamily: 'PoetsenOne',
+                                  color: Colors.white),
+                            ))
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 30, top: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          "Makeup type     :   ",
+                          style: TextStyle(
+                              fontSize: 18,
+                              fontFamily: 'PoetsenOne',
+                              color: Colors.white),
+                        ),
+                        SizedBox(
+                            width: width * 0.4,
+                            child: Text(
+                              makeuptype,
+                              // value.newWorkList[index].makeuptype,
+                              style: const TextStyle(
+                                  fontSize: 18,
+                                  fontFamily: 'PoetsenOne',
+                                  color: Colors.white),
+                            ))
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10, left: 30),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          "Description       :   ",
+                          style: TextStyle(
+                              fontSize: 18,
+                              fontFamily: 'PoetsenOne',
+                              color: Colors.white),
+                        ),
+                        SizedBox(
+                            width: width * 0.4,
+                            child: Text(
+                              description,
+                              // value.newWorkList[index].description,
+                              style: const TextStyle(
+                                  fontSize: 18,
+                                  fontFamily: 'PoetsenOne',
+                                  color: Colors.white),
+                            ))
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10, left: 30),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          "Price                     :   ",
+                          style: TextStyle(
+                              fontSize: 18,
+                              fontFamily: 'PoetsenOne',
+                              color: Colors.white),
+                        ),
+                        SizedBox(
+                            width: width * 0.4,
+                            child: Text(
+                              "$price/",
+                              // "${value.newWorkList[index].price}/",
+                              style: const TextStyle(
+                                  fontSize: 18,
+                                  fontFamily: 'PoetsenOne',
+                                  color: Colors.white),
+                            ))
+                      ],
+                    ),
+                  ),
+                ]),
+              ),
             ],
           ),
         ),
-          ),
-
-
-
-
+      ),
     );
   }
+}
 
-
-  }
 buildIndiCator(int count, BuildContext context, int activeindex) {
   //    print(activeIndex.toString()+"dpddoopf");
 
@@ -305,8 +306,7 @@ buildIndiCator(int count, BuildContext context, int activeindex) {
             strokeWidth: 1,
             paintStyle: PaintingStyle.stroke,
             activeDotColor: Color(0xff35103B),
-            dotColor:Color(0xff35103B)),
-
+            dotColor: Color(0xff35103B)),
       ),
     ),
   );
